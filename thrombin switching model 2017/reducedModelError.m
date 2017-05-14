@@ -23,21 +23,26 @@ s2 = (C2*1e09 - C(:,2))/C0(1);
 s3 = (C3*1e09 - C(:,3))/C0(3);
 s4 = (C4*1e09 - C(:,4))/C0(3);
 
-mTimePoints = length(C1);
+mTimePoints = length(C1); 
 sumErr = 1/mTimePoints*sum( s1.^2 ) ...
         + 1/mTimePoints*sum( s2.^2 ) ...
         + 1/mTimePoints*sum( s3.^2 ) ... 
         + 1/mTimePoints*sum( s4.^2 ); 
 
-%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
-% This was used in thesis
-%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
-% Normalized Error
+% sumErr = 1/mTimePoints*sqrt(sum( s1.^2 )) ...
+%         + 1/mTimePoints*sqrt(sum( s2.^2 )) ...
+%         + 1/mTimePoints*sqrt(sum( s3.^2 )) ... 
+%         + 1/mTimePoints*sqrt(sum( s4.^2 )); 
+
+% %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+% % This was used in thesis
+% %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+% % Normalized Error
 % errC1 = norm(C1*1e09 - C(:,1))/C0(1);
 % errC2 = norm(C2*1e09 - C(:,2))/C0(1);
 % errC3 = norm(C3*1e09 - C(:,3))/C0(3);
 % errC4 = norm(C4*1e09 - C(:,4))/C0(3);
-% 
+% % % 
 % sumErr = errC1 + errC2 + errC3 + errC4;
 
 

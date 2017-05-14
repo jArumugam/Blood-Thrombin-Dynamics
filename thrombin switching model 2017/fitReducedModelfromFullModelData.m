@@ -1,5 +1,6 @@
 function fitReducedModelfromFullModelData()
 
+% caseNames = {'meanPhysiologic', 'ACSmean'};
 caseNames = {'meanPhysiologic', 'ACSmean', 'hemophilia2c'};
 
 for ii = 1:length(caseNames)
@@ -12,14 +13,21 @@ end
 
 function fitWriteReducedModelUsingPSO(caseName)
 
-Cinit = zeros(4, 1);
-Cinit(1, 1) = 1400;
-Cinit(2, 1) = 0;
-Cinit(3, 1) = 3400;
-Cinit(4, 1) = 0;
+% Cinit = zeros(4, 1);
+% Cinit(1, 1) = 1400;
+% Cinit(2, 1) = 0;
+% Cinit(3, 1) = 3400;
+% Cinit(4, 1) = 0;
 
 fName = strcat(caseName, '_FullModelData.mat');
 load(fName);
+
+Cinit = zeros(4, 1);
+Cinit(1, 1) = dat.C1(1)*1e09;
+Cinit(2, 1) = 0;
+Cinit(3, 1) = dat.C3(1)*1e09;
+Cinit(4, 1) = 0;
+
 
 fun = @(kValues) reducedModelError(kValues, dat.C1, dat.C2, dat.C3, dat.C4, Cinit); 
 rng default
